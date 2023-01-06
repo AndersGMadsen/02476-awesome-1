@@ -4,7 +4,7 @@ A short description of the project.
 
 ## Overall Goal
 
-Contributing to a pipeline for Chr. Hansen that includes inference of images (counting tumors) from lab equipment using computer vision
+The aim of the project is to use MLOps methods learned in the course to contribute to a pipeline for Chr. Hansen that includes inference of images (counting tumors) from lab equipment using computer vision
 
 ## The Framework (update)
 
