@@ -1,6 +1,25 @@
 A short description of the project.
 
-Project Organization
+### Counting Plant Tumors using Computer Vision
+
+## Overall Goal
+
+Contributing to a pipeline for Chr. Hansen that includes inference of images (counting tumors) from lab equipment using computer vision
+
+## The Framework (update)
+
+Working with computer vision, the [PyTorch Image Models](https://github.com/rwightman/pytorch-image-models) framework is a sensible choice.
+
+## Using the Framework
+Use pretrained models to train the data. Depending on what works, maybe add things on top. 
+
+## Data
+We use the data provided by Chr. Hansen which consists of images uploded from microscopes. The data might need prepping. 
+
+##
+The model is provided by Chr. Hansen and we expect some kind of CNN (U-net etc.)
+
+### Project Organization (cookie cutter)
 ------------
 
     ├── LICENSE
