@@ -1,6 +1,3 @@
-awesome-1
-==============================
-
 A short description of the project.
 
 Project Organization
