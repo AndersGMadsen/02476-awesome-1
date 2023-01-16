@@ -21,3 +21,4 @@ torchvision>=0.14.1
 wandb>=0.13.7
 
 timm
+matplotlib
