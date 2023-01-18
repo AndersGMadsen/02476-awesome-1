@@ -55,12 +55,12 @@ jobs:
         python -m flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - uses: iterative/setup-dvc@v1
 
-    - name: Get data
-      run: python -m dvc pull
-      env:
-        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+#    - name: Get data
+#      run: python -m dvc pull
+#      env:
+#        GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
 
     - name: Test with pytest
       run: |
         pip install pytest
-#        python -m pytest -v
+        python -m pytest -v
