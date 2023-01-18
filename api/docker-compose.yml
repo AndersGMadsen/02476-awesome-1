@@ -2,7 +2,9 @@ version: '3'
 
 services:
   fastapi:
-    build: fastapi/
+    build: 
+      context: ../
+      dockerfile: api/fastapi/Dockerfile
     ports: 
       - 8000:8000
     networks:

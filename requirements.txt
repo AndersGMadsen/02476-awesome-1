@@ -1,6 +1,4 @@
 # local package
--e .
-
 awscli
 botocore
 ipykernel
