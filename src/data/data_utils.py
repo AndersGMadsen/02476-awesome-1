@@ -2,7 +2,6 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from functools import partial
-from p_tqdm import p_imap, p_uimap
 import os
 from os import listdir
 from os.path import join
@@ -10,7 +9,6 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 import torchvision
-from multiprocessing import Pool
 
 
 def split_data(dir):
@@ -118,13 +116,6 @@ def process_and_save_data(key, name_dict, input_dir, output_dir):
 
     func = partial(slice_and_save, key=key, input_dir=input_dir, output_dir=output_dir, num_classes=num_classes)
 
-    #iterator = p_uimap(func, list(range(len(name_dict[key]))), name_dict[key])
-    #for result in iterator:
-    #    save_slices(*result, output_dir)
-
     from tqdm import tqdm
     for idx, name in tqdm(enumerate(name_dict[key]), total=len(name_dict[key])):
         func(idx, name)
-
-    ##p_umap(func, list(range(len(name_dict[key]))), name_dict[key])
-    ##func(0, name_dict[key][0])
