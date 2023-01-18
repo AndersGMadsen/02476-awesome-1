@@ -76,12 +76,12 @@ end of the project.
 * [x] Write unit tests related to model construction and or model training
 * [x] Calculate the coverage.
 * [x] Get some continuous integration running on the github repository
-* [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
+* [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [ ] Create a trigger workflow for automatically building your docker images
 * [ ] Get your model training in GCP using either the Engine or Vertex AI
-* [ ] Create a FastAPI application that can do inference using your model
+* [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
-* [ ] Deploy your model in GCP using either Functions or Run as the backend
+* [x] Deploy your model in GCP using either Functions or Run as the backend
 
 ### Week 3
 
@@ -129,7 +129,7 @@ s194272, s194260
 >
 > Answer:
 
-We used a UNET where the encoder was resnet inspired from the third party frame work Pytorch Image Models. The decoder was found elsewhere as the framework did not offer many selections of segmentation model.
+We used a UNET where the encoder was resnet inspired from the third party frame work Pytorch Image Models. The decoder was found elsewhere as the framework did not offer many selections of segmentation model. Honestly, using a third party framework was a little vit limiting. Obviouly, it assured quality regarding the model and it is always great to implement new model in different frameworks. However, as our starting point was the data set, we did spend some time finding a model from the recommended frameworks that worked for our setting. It was great working with a third party set up in this project.
 
 ## Coding environment
 
@@ -148,7 +148,7 @@ We used a UNET where the encoder was resnet inspired from the third party frame 
 >
 > Answer:
 
-In our project, we used a requirements file to keep track of dependencies. The list of dependencies can be auto-generated calling pip install -r requirements.txt or by make requirements. There is also a requirements_test.txt which is used for packages only used for testing purposes. One could easily get a complete copy of the working environment by running those commands.
+In our project, we used a requirements file to keep track of dependencies. The list of dependencies can be auto-generated calling pip install -r requirements.txt or by make requirements. There is also a requirements_test.txt which is used for packages only used for testing purposes. One could easily get a complete copy of the working environment by running those commands. At some point, we also had a requirements file for the api so it is important to have a good setup and workflow to keep track of everything which we did manage to do. testing that all dependencies work with github action was a great tool to learn.
 
 ### Question 5
 
@@ -163,7 +163,7 @@ In our project, we used a requirements file to keep track of dependencies. The l
 > *experiments.*
 > Answer:
 
-From the cookiecutter template we have filled out the almost all folders. We did not really use the docs or the references folders in our project. We have added a fastapi folder that contains code for running our locally hosted app. We also added a tests folder that contains pytest tests.
+From the cookiecutter template we have filled out the almost all folders. We did not really use the docs or the references folders in our project. We have added a fastapi folder that contains code for running our locally hosted app. We also added a tests folder that contains pytest tests. For experiments, we have the make_train script as well as the configuration files. The cookie cutter template is really nice and something I think we will keep using. We also did not use the visualisation folder a lot. Normally, we develop a lot in notebooks and it is nice to keep them separate from the actual code.
 
 ### Question 6
 
@@ -174,7 +174,7 @@ From the cookiecutter template we have filled out the almost all folders. We did
 >
 > Answer:
 
---- question 6 fill here ---
+We used some of the build in methods for assuring data quality and good practice like pep8, isort and linting etc. Most of the rules were implemented to run implicitly, that is, running automatically. Good coding practises really help structure work especially when more people are working on it - which is the case in larger projects.
 
 ## Version control
 
@@ -193,7 +193,7 @@ From the cookiecutter template we have filled out the almost all folders. We did
 >
 > Answer:
 
-In total we implemented about 10 tests in four categories and we are primarily testing the data structures and the model as these are the most critical parts of our application but also some the preprecess functions are tested.
+In total we implemented about 10 tests in four categories and we are primarily testing the data structures and the model as these are the most critical parts of our application but also some the preprecess functions are tested. Funnily enough, we did not find the actual tests running as usual as the process of implementing them. Obviouly, erros will erise and when that time comes, it is very useful to have tests. We used pytest.
 
 ### Question 8
 
@@ -208,7 +208,7 @@ In total we implemented about 10 tests in four categories and we are primarily t
 >
 > Answer:
 
-The total code coverage of code is about 85%, which includes all our source code. We do not have 00% coverage of our code and you can reason that the number in itself does not tell a whole lot about the code. The coverage depends on the tests. What we also found was that the process of writing the unittests was more giving than the fact that they were running.
+The total code coverage of code is about 85%, which includes all our source code. We do not have 00% coverage of our code and you can reason that the number in itself does not tell a whole lot about the code. The coverage depends on the tests. What we also found was that the process of writing the unittests was more giving than the fact that they were running. The coverage only spits out the number of lines that are run and while it is good to know that lines run without errors, there are many things about the structures of the data and the model that the coverage does not tell you anything about. 
 
 ### Question 9
 
@@ -223,7 +223,7 @@ The total code coverage of code is about 85%, which includes all our source code
 >
 > Answer:
 
-No, we did not really use branches and pull requsts. Generally, they can really help structure the workflow but we were only two people and did a lot together and we did fine without
+No, we did not really use branches and pull requsts. Generally, they can really help structure the workflow but we were only two people and did a lot together and we did fine without it. If the project had been slightly more substantial, we definitely would have made branches and PR but as we were working so closely and almost everything, we made it work without. The only use of branches was that we created a dev branch to push to after we implemented github actions such that we did not have run all tests everytime we pushed something (which in periods was quite often). If we had used branches, it would probably have been task related and not person related as suggested. 
 
 ### Question 10
 
@@ -238,7 +238,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 10 fill here ---
+Yes, we dod use DVC for managing data in our project. There was only one version of the data ever so we did not really use it for version control. However, connecting DVC to google drive and pulling that fro there was very useful and a nice way of sharing data and making it accesible. In a real case scenario, with pictures coming in all the time, DVC would be really great and very  benficial for keepong track of data versions and so on. It is without a doubt etremely beneficial to know exactly what data your model is training on and DVC is a great tool for keeping track of that ecaxtly. In the end, in our pipeline, you do have to pull data using DVC. 
 
 ### Question 11
 
@@ -254,7 +254,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 11 fill here ---
+We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. 
 
 ## Running code and tracking experiments
 
@@ -273,7 +273,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 12 fill here ---
+Our experiemnt is quite easy to run. You pull the data from google drive, you process the data using our make_dataset.py file, and then you can train the model on the processed data with train_model.py. This will take some time (even with GPUs) as the images are large and they are many (9000 train images).
 
 ### Question 13
 
@@ -288,7 +288,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 13 fill here ---
+first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb).
 
 ### Question 14
 
@@ -320,7 +320,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 15 fill here ---
+For our project we developed several images: one training and inference deployment. For example to run the training docker image: `docker run trainer:latest`. Link to docker file: <weblink>*. However, we moved the api code into the project folder and it seemed silly to have a dockerfile inside a docker file so in the end, we did not use all the images as maybe you could have.  We also spent a lot of time on docker and it was defnitely one of the most annoying and challenging things tht we worked with in this course. However, we do see the value of images and it is something we will use in the future. 
 
 ### Question 16
 
@@ -335,7 +335,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 16 fill here ---
+While doing a lot of development, the good old print statements were used a lot but when deploying some of the larger scripts visual studios's build in debugger was of much help. We did some profiling doing the development of cod ebut it was not a lot as the code was already perfect.. just kidding, profiling is definitely very useful but in this project is way maybe not very relevant as worked it out using other methods. still, a quite useful tool that we had not previously worked with. Still, debugging will probably always be depedent on the person - everyone does things differently.
 
 ## Working in the cloud
 
@@ -350,9 +350,9 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 > Example:
 > *We used the following two services: Engine and Bucket. Engine is used for... and Bucket is used for...*
 >
-> Answer:
+> Answer: 
 
---- question 17 fill here ---
+We tried out the various options. We used engine for training. However, the training was very slow and using GPUs was quite expensive so we ended up training on the DTU server in the end. We used bucket for data but again, google drive also worked well. we used the container registry for docker images. Here, we had a lot of problems with authentications. We used Google Run to deploy the model.
 
 ### Question 18
 
@@ -410,7 +410,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 22 fill here ---
+For deployment, we wrapped our model into an application using fast api and streamlit for the ui. We tried locally serving the model which seem to work. We did not get to serving it in the cloud but that could quite easily be done so that a user could invoke the service. 
 
 ### Question 23
 
@@ -425,7 +425,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 23 fill here ---
+No, we played around with monitoring the model and testing data drifting and such. However, it was a bit trickier to access our images than in the case of the iris data set. We tried out different methods including a package called deepcheck which would corrupt the images in different ways and see how robust the model was to corrupted images. For monitoring, we could have used google services to monitor the model and the application. It wouls be cool to see how the model beaves over time as well as how sensitive it is to new data (data drifting). So, we would not say we didn't manage it, but is was not evident that it was necissary in our case.
 
 ### Question 24
 
@@ -439,7 +439,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 24 fill here ---
+s194272 used only a few for the MNIST testing and s194260 used almost all on an expensive GPU cluster for a few days. In total about 80 spent. 
 
 ## Overall discussion of project
 
@@ -474,7 +474,7 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 26 fill here ---
+This was in some ways an easy project to make and in some ways incredibly difficult. In this course, we were presented with so many great tools for doing machine learning in practise and many of the things have we have spent so much time on in earlier project were know tough how to automise. For example, removing biolerplate code with pytorch lightning and using GPUs easily with config files. However, at times, it was also quite difficult to pick and choose between the many tools - which were useful and which were just cool and great to know? (most are useful if not relevant)! One of the things we spent some time on in this project was data management. Managing and maintaining large amounts of data is always difficult. This includes cleaning, preprocessing, and storing data in a way that is easily accessible for both training and deployment. Additionally, ensuring the data is of high quality and is consistent across different stages of the pipeline is crucial for the success of the project. We also spent A LOT of times on making docker work and did choose to make some compormises along the way. We also realised that collaboration and communication is very important for succcesful MLOps. Wokring only two people we had things relatively under control but it can be easy to mess things up when you are more people working together. 
 
 ### Question 27
 
@@ -491,4 +491,4 @@ No, we did not really use branches and pull requsts. Generally, they can really 
 >
 > Answer:
 
---- question 27 fill here ---
+This project was made in close collaboration between the two members and all members controbuted to code and structuring of the project. If we have to delegate, s194272 was in charge of data processing, a lot of testing, and the API whereas s194260 was in charge of training the model, configs and building dockers images. 
