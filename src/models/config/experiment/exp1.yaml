@@ -1,0 +1,7 @@
+data_dir: './data/processed'
+seed: 23221373
+lr: 1e-3
+batch_size: 8
+max_epochs: 100
+wandb: True
+gpus: 1

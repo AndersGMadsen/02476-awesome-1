@@ -4,14 +4,20 @@ from pytorch_lightning import LightningModule
 from torch import nn, optim
 import torch
 from torch.utils.data import DataLoader
-from torchvision import transforms
 from typing import Optional, List
+
+from src.data.dataset import BCSSDataset
 
 from timm import create_model
 
 class UNET(LightningModule):
-    def __init__(self, num_classes = 2, decoder_channels=[256, 128, 64, 32, 16]) -> None:
+    def __init__(self, num_classes = 6, decoder_channels=[256, 128, 64, 32, 16],
+                 data_dir = "data/processed", batch_size = 1, lr = 0.01) -> None:
         super().__init__()
+
+        self.data_dir = data_dir
+        self.batch_size = batch_size
+        self.lr = lr
 
         encoder = create_model(
             "resnet50",
@@ -29,6 +35,8 @@ class UNET(LightningModule):
             final_channels=num_classes
         )
 
+        self.criterion = nn.CrossEntropyLoss()
+
     def forward(self, x):
         x = self.encoder(x)
         x.reverse()  # torchscript doesn't work with [::-1]
@@ -39,30 +47,40 @@ class UNET(LightningModule):
         return optim.Adam(self.parameters(), lr=self.lr)
 
     def train_dataloader(self):
-        return super().train_dataloader()
+        dataset = BCSSDataset(root_dir=self.data_dir, key="train")
+        loader = DataLoader(dataset=dataset, batch_size=self.batch_size, shuffle=True, num_workers=6)
+        return loader
     
     def val_dataloader(self):
-        return super().val_dataloader()
+        dataset = BCSSDataset(root_dir=self.data_dir, key="validation")
+        loader = DataLoader(dataset=dataset, batch_size=self.batch_size, shuffle=True, num_workers=6)
+        return loader
 
     def test_dataloader(self):
-        return super().test_dataloader()
+        dataset = BCSSDataset(root_dir=self.data_dir, key="test")
+        loader = DataLoader(dataset=dataset, batch_size=self.batch_size, shuffle=True, num_workers=6)
+        return loader
 
     def training_step(self, batch, batch_idx):
         data, target = batch
         preds = self(data)
-        loss = self.criterion(preds, target.flatten())
+        loss = self.criterion(preds, target)
         
-        acc = (target.flatten() == preds.argmax(dim=-1)).float().mean()
+        acc = (target.argmax(dim=1) == preds.argmax(dim=1)).to(torch.float).mean()
         self.log('train_loss', loss)
         self.log('train_acc', acc)
 
-        return super().training_step()
+    def validation_step(self, batch, batch_idx):
+        data, target = batch
+        preds = self(data)
+        loss = self.criterion(preds, target)
+        self.log_dict({'val_loss': loss})
 
-    def validation_step(self):
-        return super().validation_step()
-
-    def training_step(self):
-        return super().training_step()
+    def test_step(self, batch, batch_idx):
+        data, target = batch
+        preds = self(data)
+        loss = self.criterion(preds, target)
+        self.log_dict({'val_loss': loss})
 
 
 
