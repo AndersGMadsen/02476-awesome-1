@@ -54,28 +54,28 @@ end of the project.
 * [x] Make sure that all team members have write access to the github repository
 * [x] Create a dedicated environment for you project to keep track of your packages
 * [x] Create the initial file structure using cookiecutter
-* [ ] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
-* [ ] Add a model file and a training script and get that running
-* [ ] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
-* [ ] Remember to comply with good coding practices (`pep8`) while doing the project
-* [ ] Do a bit of code typing and remember to document essential parts of your code
-* [ ] Setup version control for your data or part of your data
-* [ ] Construct one or multiple docker files for your code
-* [ ] Build the docker files locally and make sure they work as intended
-* [ ] Write one or multiple configurations files for your experiments
-* [ ] Used Hydra to load the configurations and manage your hyperparameters
+* [x] Fill out the `make_dataset.py` file such that it downloads whatever data you need and
+* [x] Add a model file and a training script and get that running
+* [x] Remember to fill out the `requirements.txt` file with whatever dependencies that you are using
+* [x] Remember to comply with good coding practices (`pep8`) while doing the project
+* [x] Do a bit of code typing and remember to document essential parts of your code
+* [x] Setup version control for your data or part of your data
+* [x] Construct one or multiple docker files for your code
+* [x] Build the docker files locally and make sure they work as intended
+* [x] Write one or multiple configurations files for your experiments
+* [x] Used Hydra to load the configurations and manage your hyperparameters
 * [ ] When you have something that works somewhat, remember at some point to to some profiling and see if
       you can optimize your code
-* [ ] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
+* [x] Use Weights & Biases to log training progress and other important metrics/artifacts in your code. Additionally,
       consider running a hyperparameter optimization sweep.
-* [ ] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
+* [x] Use Pytorch-lightning (if applicable) to reduce the amount of boilerplate in your code
 
 ### Week 2
 
-* [ ] Write unit tests related to the data part of your code
-* [ ] Write unit tests related to model construction and or model training
-* [ ] Calculate the coverage.
-* [ ] Get some continuous integration running on the github repository
+* [x] Write unit tests related to the data part of your code
+* [x] Write unit tests related to model construction and or model training
+* [x] Calculate the coverage.
+* [x] Get some continuous integration running on the github repository
 * [ ] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [ ] Create a trigger workflow for automatically building your docker images
 * [ ] Get your model training in GCP using either the Engine or Vertex AI
@@ -85,7 +85,7 @@ end of the project.
 
 ### Week 3
 
-* [ ] Check how robust your model is towards data drifting
+* [x] Check how robust your model is towards data drifting
 * [ ] Setup monitoring for the system telemetry of your deployed model
 * [ ] Setup monitoring for the performance of your deployed model
 * [ ] If applicable, play around with distributed data loading
@@ -129,7 +129,7 @@ s194272, s194260
 >
 > Answer:
 
---- question 3 fill here ---
+We used a UNET where the encoder was resnet inspired from the third party frame work Pytorch Image Models. The decoder was found elsewhere as the framework did not offer many selections of segmentation model.
 
 ## Coding environment
 
@@ -163,7 +163,7 @@ s194272, s194260
 > *experiments.*
 > Answer:
 
---- question 5 fill here ---
+From the cookiecutter template we have filled out the almost all folders. We did not really use the docs or the references folders in our project. We have added a fastapi folder that contains code for running our locally hosted app. We also added a tests folder that contains pytest tests.
 
 ### Question 6
 
@@ -193,7 +193,7 @@ s194272, s194260
 >
 > Answer:
 
---- question 7 fill here ---
+In total we implemented about 10 tests in four categories and we are primarily testing the data structures and the model as these are the most critical parts of our application but also some the preprecess functions are tested.
 
 ### Question 8
 
@@ -208,7 +208,7 @@ s194272, s194260
 >
 > Answer:
 
---- question 8 fill here ---
+The total code coverage of code is about 85%, which includes all our source code. We do not have 00% coverage of our code and you can reason that the number in itself does not tell a whole lot about the code. The coverage depends on the tests. What we also found was that the process of writing the unittests was more giving than the fact that they were running.
 
 ### Question 9
 
@@ -223,7 +223,7 @@ s194272, s194260
 >
 > Answer:
 
---- question 9 fill here ---
+No, we did not really use branches and pull requsts. Generally, they can really help structure the workflow but we were only two people and did a lot together and we did fine without
 
 ### Question 10
 
