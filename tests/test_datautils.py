@@ -8,7 +8,7 @@ from src.data.data_utils import *
 
 def test_datautils(slice_size = (512, 512)):
 
-    toy_image = torch.ones(1,3,512,512)
+    toy_image = torch.moveaxis(torch.ones(1,3,512,512), 0, -1)
 
     idxs_height, idxs_width = get_slice_idxs(toy_image.shape, slice_size)
     image_slices = slice_image(toy_image, slice_size + (3,), idxs_height, idxs_width)
