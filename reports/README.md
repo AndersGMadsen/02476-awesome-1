@@ -254,7 +254,7 @@ Yes, we dod use DVC for managing data in our project. There was only one version
 >
 > Answer:
 
-We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. 
+We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main.  
 
 ## Running code and tracking experiments
 
@@ -288,7 +288,7 @@ Our experiemnt is quite easy to run. You pull the data from google drive, you pr
 >
 > Answer:
 
-first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb).
+first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb). To reproduce an experiment, one would have to pull the data from drive, process the data using make_dataset.py, train the model using train_model.py and create an inference.
 
 ### Question 14
 
