@@ -70,7 +70,7 @@ def slice_image(image, size, idxs_height, idxs_width):
             images[i, j] = image[sy:ey, sx:ex]
     return images
 
-def unslice_images(images, size, idxs_height, idxs_width, combine_func=lambda x: torch.mean(x, axis=0)):
+def unslice_images(images, size, idxs_height, idxs_width, combine_func=lambda x: torch.stack(x).mean(dim=0)):
     image = torch.full((size), torch.nan)
     for i, (sy, ey) in enumerate(idxs_height):
         for j, (sx, ex) in enumerate(idxs_width):
