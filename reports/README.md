@@ -148,7 +148,7 @@ We used a UNET where the encoder was resnet inspired from the third party frame 
 >
 > Answer:
 
---- question 4 fill here ---
+In our project, we used a requirements file to keep track of dependencies. The list of dependencies can be auto-generated calling pip install -r requirements.txt or by make requirements. There is also a requirements_test.txt which is used for packages only used for testing purposes. One could easily get a complete copy of the working environment by running those commands.
 
 ### Question 5
 
