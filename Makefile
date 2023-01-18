@@ -24,6 +24,7 @@ endif
 requirements: test_environment
 	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
 	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+	$(PYTHON_INTERPRETER) -m pip install -r requirements_tests.txt
 
 ## Make Dataset
 data: requirements
@@ -33,6 +34,11 @@ data: requirements
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	rm -rf ".pytest_cache"
+	rm -rf "lightning_logs"
+	rm -rf "outputs"
+	rm -rf "wandb/"
+	rm -rf ".pytest_cache/"
 
 ## Lint using flake8
 lint:

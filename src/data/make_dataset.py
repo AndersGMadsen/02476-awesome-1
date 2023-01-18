@@ -3,7 +3,7 @@ import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
-
+from src.data.data_utils import *
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -14,6 +14,15 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
+
+    name_dict = split_data(input_filepath)
+
+    logger.info('processing training data')
+    process_and_save_data("train", name_dict, input_filepath, output_filepath)
+    logger.info('processing validation data')
+    process_and_save_data("validation", name_dict, input_filepath, output_filepath)
+    logger.info('processing test data')
+    process_and_save_data("test", name_dict, input_filepath, output_filepath)
 
 
 if __name__ == '__main__':
