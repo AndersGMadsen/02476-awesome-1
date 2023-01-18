@@ -9,7 +9,7 @@ from src.data.dataset import BCSSDataset
 
 
 
-@pytest.mark.skipif(len(os.listdir(_PATH_DATA + '/processed/train')) < 0, reason="Data files not found")
+@pytest.mark.skipif(not os.path.exists(_PATH_DATA + '/processed/train'), reason="Data files not found")
 def test_processeddata():
 
     dir = _PATH_DATA + '/processed'
