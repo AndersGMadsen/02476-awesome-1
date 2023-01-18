@@ -4,6 +4,9 @@ data/processed/*
 data/interim/*
 data/external/*
 
+lightning_logs
+models/checkpoints/*.ckpt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
