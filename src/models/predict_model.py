@@ -46,7 +46,7 @@ class SegmentImage:
         mask_prob = torch.moveaxis(mask_prob, -1, 0)
         mask_pred = mask_prob.argmax(axis=0)
 
-        return mask_prob
+        return mask_pred
 
 if __name__ == "__main__":
     predict = SegmentImage(UNET, "models/checkpoints/epoch=2-step=21664.ckpt")
