@@ -70,6 +70,8 @@ class UNET(LightningModule):
         self.log('train_loss', loss)
         self.log('train_acc', acc)
 
+        return loss
+
     def validation_step(self, batch, batch_idx):
         data, target = batch
         preds = self(data)
