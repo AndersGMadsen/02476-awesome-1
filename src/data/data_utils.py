@@ -76,7 +76,7 @@ def unslice_images(images, size, idxs_height, idxs_width, combine_func=lambda x:
         for j, (sx, ex) in enumerate(idxs_width):
             slice = image[sy:ey, sx:ex]
             slice[torch.isnan(slice)] = images[i, j, torch.isnan(slice)]
-            slice[~torch.isnan(slice)] = combine_func((slice[~torch.isnan(slice)], images[i, j, ~torch.isnan(slice)]), axis=0)        
+            slice[~torch.isnan(slice)] = combine_func((slice[~torch.isnan(slice)], images[i, j, ~torch.isnan(slice)]))        
     return image
 
 
