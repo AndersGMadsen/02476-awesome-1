@@ -307,7 +307,7 @@ first of all, everything is logged. Traning data is version controlled and we us
 >
 > Answer:
 
---- question 14 fill here ---
+In the [first figure]{figures/wandb/bestfit.png} we see the wandb log of the model hitting its best val loss before it starts overfitting. We also see the number of epochs increase (which is lucky), we see the train loss descrese an train acc. increase - as things should be. We do however also see the model hit its best epoch after which the validation loss rapidly increases a lot - classic overfitting. In the [second figure]{figures/wandb/overfitting.png} we see what happens if we let the mode keep running. The validation loss keeps increasing, the training loss decreases and the traning accuracy reaches almost 100% which means that the model can almost perfect "memorise" all training data. In a way, we can compress 20GB of data in a 1GB model - not bad. Wandb is obviously an etremely useful tool in keeping track of your experiments and testing if the model are performing as expected - or performing at all. For example, the first time we trained the model, we though it was too complex because it was not converging. Turns out we forgot to return the loss... oh well.
 
 ### Question 15
 
@@ -369,7 +369,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 18 fill here ---
+We used the compute engine to run our experiments on Google cloud. we created an instance using the terminal woth gcloud. We chose the europe-west-4a zone with the image family that was the latest pytorch GPU, the image project was the deeplearning platform release, the accelerator was an nvidia type tesa v100 with one GPU. This was relatively easy to use (so was the DTU HPC) and definitely something we will make use of in the future. 
 
 ### Question 19
 
@@ -378,7 +378,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 19 fill here ---
+Insert image here
 
 ### Question 20
 
@@ -387,7 +387,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 20 fill here ---
+We did not use this.
 
 ### Question 21
 
@@ -396,7 +396,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 21 fill here ---
+We did not use this.
 
 ### Question 22
 
