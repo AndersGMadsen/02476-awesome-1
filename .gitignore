@@ -8,7 +8,6 @@ data/external/*
 
 lightning_logs
 models/checkpoints/*.ckpt
-wandb/
 outputs/
 
 # Byte-compiled / optimized / DLL files
