@@ -290,7 +290,7 @@ Our experiemnt is quite easy to run. You pull the data from google drive, you pr
 >
 > Answer:
 
-first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb). To reproduce an experiment, one would have to pull the data from drive, process the data using make_dataset.py, train the model using train_model.py and create an inference using the predict_model.py script. Using pythorch lighning, we also used the make seed fuctionality so that every place where a seed could be made, it was made. 
+first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb). To reproduce an experiment, one would have to pull the data from drive, process the data using make_dataset.py, train the model using train_model.py and create an inference using the predict_model.py script. Using pythorch lighning, we also used the make seed fuctionality so that every place where a seed could be made, it was made. yes yes yes yes yes yes. 
 
 ### Question 14
 
@@ -412,7 +412,7 @@ We did not use this.
 >
 > Answer:
 
-For deployment, we wrapped our model into an application using fast api and streamlit for the ui. We tried locally serving the model which seem to work. We did not get to serving it in the cloud but that could quite easily be done so that a user could invoke the service. However, we did spent some time on making the user interface nice taking inspiration from an example using the streamlit framework. This turned out really nice. We used a docker image to call the api which was a great way of doing it, in our own opinions. 
+For deployment, we wrapped our model into an application using fast api and streamlit for the ui. We tried locally serving the model which seem to work. We did not get to serving it in the cloud but that could quite easily be done so that a user could invoke the service. However, we did spent some time on making the user interface nice taking inspiration from an example using the streamlit framework. This turned out really nice. We used a docker image to call the api which was a great way of doing it, in our own opinions. yes. yes. 
 
 ### Question 23
 
