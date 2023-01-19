@@ -254,8 +254,10 @@ Yes, we dod use DVC for managing data in our project. There was only one version
 >
 > Answer:
 
-We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main.  
-
+We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. we did look at implementing cont. ML as well but even though we did some priliminary tests, we did not include CML in the finished projects both because the data was too large and the trained model as well was huge (1.2GB). We are a little sorry that data was such a limiting factor in this project and but this must also be the case in real world project. Then you just buy more storage and github minutes, I guess.
+      
+      
+      
 ## Running code and tracking experiments
 
 > In the following section we are interested in learning more about the experimental setup for running your code and
