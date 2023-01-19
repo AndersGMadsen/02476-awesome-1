@@ -78,7 +78,7 @@ end of the project.
 * [x] Get some continuous integration running on the github repository
 * [x] Create a data storage in GCP Bucket for you data and preferable link this with your data version control setup
 * [ ] Create a trigger workflow for automatically building your docker images
-* [ ] Get your model training in GCP using either the Engine or Vertex AI
+* [x] Get your model training in GCP using either the Engine or Vertex AI
 * [x] Create a FastAPI application that can do inference using your model
 * [ ] If applicable, consider deploying the model locally using torchserve
 * [x] Deploy your model in GCP using either Functions or Run as the backend
@@ -254,8 +254,10 @@ Yes, we dod use DVC for managing data in our project. There was only one version
 >
 > Answer:
 
-We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main.  
-
+We have organised our CI in one single file and use github actions and pytest to keep track of it. We use this to get caches, dependencies, linting, (not getting data because the data files were too large to be loaded on github), and unittests. We test for two different operating systems (linux and Mac - Windows was difficult to get up and running) with two version of python (3.9 and 3.10). We could potentially have tested mny other things but this already took 5 minutes. As mentioned, to work around doiing github actions at every push, we pushed to a test branch and then merged into main. we did look at implementing cont. ML as well but even though we did some priliminary tests, we did not include CML in the finished projects both because the data was too large and the trained model as well was huge (1.2GB). We are a little sorry that data was such a limiting factor in this project and but this must also be the case in real world project. Then you just buy more storage and github minutes, I guess. It would be fun to do a project where you have to deal with this issue, in fact.
+      
+      
+      
 ## Running code and tracking experiments
 
 > In the following section we are interested in learning more about the experimental setup for running your code and
@@ -288,7 +290,7 @@ Our experiemnt is quite easy to run. You pull the data from google drive, you pr
 >
 > Answer:
 
-first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb). To reproduce an experiment, one would have to pull the data from drive, process the data using make_dataset.py, train the model using train_model.py and create an inference.
+first of all, everything is logged. Traning data is version controlled and we used config files. When we train a model, a checkpooint is saved. When an experiment is run, the inference is saved. Everything is kept track of (also using wandb). To reproduce an experiment, one would have to pull the data from drive, process the data using make_dataset.py, train the model using train_model.py and create an inference using the predict_model.py script. Using pythorch lighning, we also used the make seed fuctionality so that every place where a seed could be made, it was made. yes yes yes yes yes yes. 
 
 ### Question 14
 
@@ -305,7 +307,7 @@ first of all, everything is logged. Traning data is version controlled and we us
 >
 > Answer:
 
---- question 14 fill here ---
+In the [first figure]{figures/wandb/bestfit.png} we see the wandb log of the model hitting its best val loss before it starts overfitting. We also see the number of epochs increase (which is lucky), we see the train loss descrese an train acc. increase - as things should be. We do however also see the model hit its best epoch after which the validation loss rapidly increases a lot - classic overfitting. In the [second figure]{figures/wandb/overfitting.png} we see what happens if we let the mode keep running. The validation loss keeps increasing, the training loss decreases and the traning accuracy reaches almost 100% which means that the model can almost perfect "memorise" all training data. In a way, we can compress 20GB of data in a 1GB model - not bad. Wandb is obviously an etremely useful tool in keeping track of your experiments and testing if the model are performing as expected - or performing at all. For example, the first time we trained the model, we though it was too complex because it was not converging. Turns out we forgot to return the loss... oh well. Wandb or similarly toold will definitely be used in the future also so you do nit have to track savin gthings in for loops.
 
 ### Question 15
 
@@ -367,7 +369,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 18 fill here ---
+We used the compute engine to run our experiments on Google cloud. we created an instance using the terminal woth gcloud. We chose the europe-west-4a zone with the image family that was the latest pytorch GPU, the image project was the deeplearning platform release, the accelerator was an nvidia type tesa v100 with one GPU. This was relatively easy to use (so was the DTU HPC) and definitely something we will make use of in the future. To be honest, we were presented with many ways to instanciate these virtual machines and this was just the easiest of them all. 
 
 ### Question 19
 
@@ -376,7 +378,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 19 fill here ---
+Insert image here
 
 ### Question 20
 
@@ -385,7 +387,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 20 fill here ---
+We did not use this.
 
 ### Question 21
 
@@ -394,7 +396,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
---- question 21 fill here ---
+We did not use this.
 
 ### Question 22
 
@@ -410,7 +412,7 @@ We tried out the various options. We used engine for training. However, the trai
 >
 > Answer:
 
-For deployment, we wrapped our model into an application using fast api and streamlit for the ui. We tried locally serving the model which seem to work. We did not get to serving it in the cloud but that could quite easily be done so that a user could invoke the service. 
+For deployment, we wrapped our model into an application using fast api and streamlit for the ui. We tried locally serving the model which seem to work. We did not get to serving it in the cloud but that could quite easily be done so that a user could invoke the service. However, we did spent some time on making the user interface nice taking inspiration from an example using the streamlit framework. This turned out really nice. We used a docker image to call the api which was a great way of doing it, in our own opinions. yes. yes. 
 
 ### Question 23
 
