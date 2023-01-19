@@ -1,6 +1,8 @@
 data/raw/images/*
 data/raw/masks/*
-data/processed/*
+data/processed/test/*
+data/processed/train/*
+data/processed/validation/*
 data/interim/*
 data/external/*
 
