@@ -378,7 +378,7 @@ We used the compute engine to run our experiments on Google cloud. we created an
 >
 > Answer:
 
-Insert image here
+[this figure](figures/bucket.png)
 
 ### Question 20
 
