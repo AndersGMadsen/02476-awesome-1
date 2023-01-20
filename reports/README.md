@@ -462,7 +462,7 @@ s194272 used only a few for the MNIST testing and s194260 used almost all on an 
 >
 > Answer:
 
---- question 25 fill here ---
+In Figure figures/overview.png, you see an overview of the structure of the project. We has many different setup while developing and working on this project and and the end it looks like like. We development the project on a local machine and submit experiments. We use various frameworks and packages to track of the code quality, the config files, the requirements and so on. Example being Wandb and hydra as in the figure. When we develpoment, we use git to version control the code, we did not really use brainches except for not running github actions and pytests every time. When we make chanches, we make commit that and we have pre-commit tests. When we push, we have a github workflow and actions to assure that everythings runs (on different OS and py versions). We don't save this setup in an image or container. However, we use docker to build the application for the deployed model that is wrapped in fastapi and strealit. This means that we can run the model in the deployed app and with a nice user interface that is. An external user could easily clone our code, pull the images with dvc (with permission), precess the code and train the model. However, they could also pull the docker image for the api and builc that. Id they had data (not processed just raw), they could run the model and see it in action.
 
 ### Question 26
 
