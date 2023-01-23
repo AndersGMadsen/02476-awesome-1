@@ -1,23 +1,23 @@
 A short description of the project.
 
-### Counting Plant Tumors using Computer Vision
+### breast tissue segmentation
 
 ## Overall Goal
 
-The aim of the project is to use MLOps methods learned in the course to contribute to a pipeline for Chr. Hansen that includes inference of images (counting tumors) from lab equipment using computer vision
+The aim of the project is to use MLOps methods learned in the course to create a pipeline for segmentation of breat tissue.
 
 ## The Framework (update)
 
 Working with computer vision, the [PyTorch Image Models](https://github.com/rwightman/pytorch-image-models) framework is a sensible choice.
 
 ## Using the Framework
-Use pretrained models to train the data. Depending on what works, maybe add things on top. 
+Use pretrained encoder and own decoder to train the data. encoder was based on resnet.
 
 ## Data
-We use the data provided by Chr. Hansen which consists of images uploded from microscopes. The data might need prepping. 
+We use 151 imiges of breat tissue that are really large. We process the images to smaller ones at 512x512. The data is  
 
 ##
-The model is provided by Chr. Hansen and we expect some kind of CNN (U-net etc.)
+The model is Unet based on resnet10.
 
 ### Project Organization (cookie cutter)
 ------------
